@@ -20,6 +20,8 @@ async def command_start_handler(message: Message) -> None:
 
 @dp.message()
 async def echo_handler(message: Message) -> None:
+    if message.text.startswith('/'):
+        return
     async with python_weather.Client(unit=python_weather.METRIC) as client:
         city =  message.text
         try:
